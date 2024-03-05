@@ -15,3 +15,4 @@
   Containers::Pointer<AbstractImporter> importer = static_cast<PluginManager::Manager<AbstractImporter>*>(manager())->instantiate(plugin);
     importer->setFlags(flags());
     if(fileCallback()) importer->setFileCallback(fileCallback(), fileCallbackUserData());
+//yes
