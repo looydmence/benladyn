@@ -16,3 +16,8 @@
     importer->setFlags(flags());
     if(fileCallback()) importer->setFileCallback(fileCallback(), fileCallbackUserData());
 //yes
+ if(manager()->loadState("KtxImporter"_s) == PluginManager::LoadState::NotFound &&
+           manager()->loadState("BasisImporter"_s) != PluginManager::LoadState::NotFound) {
+            if(flags() & ImporterFlag::Verbose)
+                Debug{} << "Trade::AnyImageImporter::openFile(): KtxImporter not found, trying a fallback";
+            plugin = "BasisImporter"_s;
